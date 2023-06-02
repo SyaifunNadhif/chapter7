@@ -1,0 +1,51 @@
+// Home
+GET http://localhost:3000
+
+
+
+### Create component data
+POST http://localhost:3000/components
+Content-Type: application/json
+
+{
+    
+    "name": "oli",
+    "description": "oli terbaik",
+    "supplier_id" : [1, 1]
+}
+
+
+### Get all components
+GET http://localhost:3000/components
+
+
+### Get detail components
+GET http://localhost:3000/components/1
+
+
+### Update component data
+PUT http://localhost:3000/components/4
+Content-Type: application/json
+
+{   
+    "id": 2,
+    "supplier_id" : [1, 1]
+}
+
+
+### Delete component data
+DELETE  http://localhost:3000/components/3
+
+#relation
+### add component products
+POST http://localhost:3000/components/component-suppliers
+content-type: application/json
+
+{
+    "supplier_id" : 4,
+    "component_id" : 1
+}
+
+
+
+

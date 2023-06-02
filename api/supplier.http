@@ -1,0 +1,40 @@
+// Home
+GET http://localhost:3000
+
+### Create supplier data
+POST http://localhost:3000/suppliers
+Content-Type: application/json
+
+{
+    "name": "Expander",
+    "address": "Jakarta"
+}
+
+
+### Get all suppliers
+GET http://localhost:3000/suppliers
+
+
+
+### Get detail suppliers
+GET http://localhost:3000/suppliers/1
+
+
+
+
+### Update supplier data
+PUT http://localhost:3000/suppliers/2
+Content-Type: application/json
+
+{   
+    "id": 1,
+    "name": "Kawasaki",
+    "address": "Bandung"
+}
+
+
+
+
+### Delete supplier data
+DELETE  http://localhost:3000/suppliers/3
+

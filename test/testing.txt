@@ -1,0 +1,3 @@
+sebelum testing harus ada create database terlebih dulu di folder api.http 
+karana relasinya semua id : 1, harus ada id: 1 di tiap tabel product, component, supplier
+setelah setiap tabel ada datanya, baru bisa testing

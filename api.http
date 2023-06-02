@@ -1,0 +1,41 @@
+
+### Create supplier data
+POST http://localhost:3000/suppliers
+Content-Type: application/json
+
+{
+    "name": "Toyota",
+    "address": "Jakarta"
+}
+
+
+### Create component data
+POST http://localhost:3000/components
+Content-Type: application/json
+
+{
+    
+    "name": "oli",
+    "description": "oli terbaik",
+    "supplier_id" : [1, 1]
+}
+
+### Create product data
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+    "name": "Jazz",
+    "quantity": 200,
+    "component_id": [1,1]
+}
+
+### Get all components
+GET http://localhost:3000/components
+
+### Get all products
+GET http://localhost:3000/products
+
+### Get all suppliers
+GET http://localhost:3000/suppliers
+
