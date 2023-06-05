@@ -4,15 +4,25 @@ const product = require('../controllers/product');
 const component = require('../controllers/component');
 const supplier = require('../controllers/supplier');
 const user = require('../controllers/user');
+const media = require('../controllers/media');
+const strorage = require('../utils/strorage');
+const multer = require('multer')();
 
 const middlewares = require('../utils/middlewares');
 
 router.get('/', (req, res) => res.status(200).json({message: "welcome to blog api"}));
 
+// oauth
 router.post('/auth/register', user.register);
 router.post('/auth/login', user.login);
 router.get('/auth/oauth', user.googleOauth2);
 router.get('/auth/whoami', middlewares.auth, user.whoami);
+
+// media handling
+router.post('/storage/images', strorage.image.single('media'), media.strogeSingle);
+router.post('/storage/multi/images', strorage.image.array('media'), media.storageArray);
+router.post('/imagekit/upload', multer.single('media'), media.imagekitUpload);
+
 
 router.get('/products', product.index); // get all product
 router.get('/products/:product_id', product.show); // get detail product
