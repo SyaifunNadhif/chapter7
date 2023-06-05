@@ -3,9 +3,16 @@ const router = express.Router();
 const product = require('../controllers/product');
 const component = require('../controllers/component');
 const supplier = require('../controllers/supplier');
+const user = require('../controllers/user');
 
+const middlewares = require('../utils/middlewares');
 
 router.get('/', (req, res) => res.status(200).json({message: "welcome to blog api"}));
+
+router.post('/auth/register', user.register);
+router.post('/auth/login', user.login);
+router.get('/auth/oauth', user.googleOauth2);
+router.get('/auth/whoami', middlewares.auth, user.whoami);
 
 router.get('/products', product.index); // get all product
 router.get('/products/:product_id', product.show); // get detail product
