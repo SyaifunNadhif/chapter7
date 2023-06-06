@@ -7,6 +7,7 @@ const user = require('../controllers/user');
 const media = require('../controllers/media');
 const strorage = require('../utils/strorage');
 const multer = require('multer')();
+const nodemailer = require('../utils/nodemailer');
 
 const middlewares = require('../utils/middlewares');
 
@@ -22,6 +23,22 @@ router.get('/auth/whoami', middlewares.auth, user.whoami);
 router.post('/storage/images', strorage.image.single('media'), media.strogeSingle);
 router.post('/storage/multi/images', strorage.image.array('media'), media.storageArray);
 router.post('/imagekit/upload', multer.single('media'), media.imagekitUpload);
+
+//mailer
+router.get('/test/mailer', async (req, res) => {
+  try {
+      // send email
+      nodemailer.sendMail('nadhifeldrafo@gmail.com', 'Ini Judul 2', '<h1>Ini adalah data email</h1>');
+
+      return res.status(200).json({
+          status: true,
+          message: 'success',
+          data: null
+      });
+  } catch (error) {
+      throw error;
+  }
+});
 
 
 router.get('/products', product.index); // get all product
